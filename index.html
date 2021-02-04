@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Kernelist Dead Pixel Test</title>
     <link rel="stylesheet" href="style.css">
+    <p onclick="deleteP">Click anywhere</p>
 </head>
-<body>
+<body onclick="openFullscreen()">
 
 
 <script>
@@ -13,7 +14,18 @@
     const documentBody = document.body;
     let count = 0;
 
-    alert("Please press \"F11\"")
+    var elem = document.documentElement;
+    function openFullscreen() {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+        }
+        document.querySelector("p").remove()
+    }
+
 
     documentBody.addEventListener("click",colorChanger);
 
